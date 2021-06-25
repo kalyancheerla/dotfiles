@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# Always enable colored `ls` & `grep` output
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# List all files colorized in long format
+alias l='ls -lF'
+alias ll='ls -alF'
+
+# List all files colorized in long format, excluding . and ..
+alias la='ls -lAF'
+
+# List only directories
+alias lsd="ls -lF | grep --color=never '^d'"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# Public IP
+alias publicip="dig +short myip.opendns.com @resolver1.opendns.com"
