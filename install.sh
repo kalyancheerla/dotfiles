@@ -7,6 +7,7 @@ declare -a DOTFILES=(
 ".bash_prompt"
 ".aliases"
 ".exports"
+".extras"
 ".inputrc"
 ".tmux.conf"
 ".gdbinit")
