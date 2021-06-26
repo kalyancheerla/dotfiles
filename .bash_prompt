@@ -51,6 +51,7 @@ prompt_git() {
 
     echo -e "${1}${branchName}${2}${s}"
 }
+
 prompt_exit_code() {
     local EXIT="$?"
     if [ $EXIT != 0 ]; then
@@ -103,7 +104,7 @@ fi
 
 # Set the terminal title and prompt.
 PS1="\[${bold}\]"
-PS1+="\[${yellow}\]\$(prompt_exit_code)"
+PS1+="\[${yellow}\]\$(prompt_exit_code)" # Added exit code
 PS1+="\[${userStyle}\]\u" # username
 PS1+="\[${white}\] @ "
 PS1+="\[${hostStyle}\]\h" # host
@@ -112,7 +113,7 @@ PS1+="\[${cyan}\]\w" # working directory full path
 PS1+="\$(prompt_git \"\[${white}\] # \[${violet}\]\" \"\[${blue}\]\")" # Git repository details
 PS1+="\n"
 #PS1+="\[${white}\]->> \[${reset}\]" # `->>` (and reset color)
-PS1+="\[${white}\]🔥 \[${reset}\]" # `->>` (and reset color)
+PS1+="\[${white}\]🔥 \[${reset}\]"
 export PS1
 
 PS2="\[${yellow}\]→ \[${reset}\]"
