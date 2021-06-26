@@ -1,10 +1,29 @@
 #!/usr/bin/env bash
 
-DOTFILES="$HOME/repos/dotfiles"
+DOTFILESPATH="$HOME/repos/dotfiles"
+declare -a DOTFILES=(
+".bash_profile"
+".bashrc"
+".bash_prompt"
+".aliases"
+".exports"
+".inputrc"
+".tmux.conf"
+".gdbinit")
 
-for file in .{bash_profile,bashrc,bash_prompt,aliases,exports,tmux.conf,gdbinit}; do
+echo "Sourcing dotfiles started..."
+for file in "${DOTFILES[@]}"; do
     if [ -f "$HOME/$file" ]; then
-        mv "$HOME/$file" "$HOME/$file.orig"
+        if [ -h "$HOME/$file" ]; then
+            echo "[-] skipping $file"
+        else
+            echo "[+] moving $HOME/$file -> $HOME/$file.orig"
+            mv "$HOME/$file" "$HOME/$file.orig"
+            echo "[+] symlinking $DOTFILESPATH/$file -> $HOME/$file"
+            ln -s "$DOTFILESPATH/$file" "$HOME/$file"
+        fi
+    else
+        echo "[+] symlinking $DOTFILESPATH/$file -> $HOME/$file"
+        ln -s "$DOTFILESPATH/$file" "$HOME/$file"
     fi
-    ln -s "$DOTFILES/$file" "$HOME/$file"
 done
