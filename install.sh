@@ -16,19 +16,15 @@ declare -a DOTFILES=(
 
 echo "Sourcing dotfiles started..."
 for file in "${DOTFILES[@]}"; do
-    if [ -f "$HOME/$file" ]; then
-        if [ -h "$HOME/$file" ]; then
-            echo "[-] skipping $file"
-        else
-            echo "[+] moving $HOME/$file -> $HOME/$file.orig"
-            mv "$HOME/$file" "$HOME/$file.orig"
-            echo "[+] symlinking $DOTFILESPATH/$file -> $HOME/$file"
-            ln -s "$DOTFILESPATH/$file" "$HOME/$file"
-        fi
-    else
-        echo "[+] symlinking $DOTFILESPATH/$file -> $HOME/$file"
-        ln -s "$DOTFILESPATH/$file" "$HOME/$file"
+    if [ -h "$HOME/$file" ]; then
+        echo "[-] skipping $file"
+        continue
+    elif [ -f "$HOME/$file" ]; then
+        echo "[+] moving $HOME/$file -> $HOME/$file.orig"
+        mv "$HOME/$file" "$HOME/$file.orig"
     fi
+    echo "[+] symlinking $DOTFILESPATH/$file -> $HOME/$file"
+    ln -s "$DOTFILESPATH/$file" "$HOME/$file"
 done
 
 echo "Setting up vim directory..."
@@ -40,4 +36,4 @@ fi
 echo "[+] copying $DOTFILESPATH/.vim -> $HOME/.vim"
 cp -r "$DOTFILESPATH/.vim" "$HOME/.vim"
 echo "[+] removing gitkeep files"
-find "$HOME/.vim" -name '.gitkeep' -size 0c -delete
+find "$HOME/.vim" -name ".gitkeep" -size 0c -delete
