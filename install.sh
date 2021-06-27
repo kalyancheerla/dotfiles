@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DOTFILESPATH="$HOME/repos/dotfiles"
+DOTFILESPATH="$HOME/projects/dotfiles"
 declare -a DOTFILES=(
 ".bash_profile"
 ".bashrc"
@@ -12,6 +12,7 @@ declare -a DOTFILES=(
 ".inputrc"
 ".tmux.conf"
 ".vimrc"
+".gitconfig"
 ".gdbinit")
 
 echo "Sourcing dotfiles started..."

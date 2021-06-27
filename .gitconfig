@@ -1,0 +1,32 @@
+[user]
+	name = Kalyan Ch
+	email = 32354220+kalyancheerla@users.noreply.github.com
+[alias]
+	# View abbreviated SHA, description, and history graph of the latest 20 commits.
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# View the current working tree status using the short format.
+	s = status -s
+
+	# Show the diff between the latest commit and the current state.
+	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+
+	# alias for invoking vimdiff
+	vd = difftool
+
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch --all
+	remotes = remote --verbose
+
+	# List aliases.
+	aliases = config --get-regexp alias
+
+	# List contributors with number of commits.
+	contributors = shortlog --summary --numbered
+[diff]
+	# set difftool as vimdiff
+	tool = vimdiff
+[difftool]
+	# no prompts b/w files
+	prompt = false
