@@ -22,16 +22,6 @@ set ttyfast
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 
-" Setup term color support
-"if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-	"set t_Co=256
-"endif
-"if $TERM == "xterm-true-color" || $COLORTERM == "truecolor"
-	" set Vim-specific sequences for RGB colors
-	"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-	"set termguicolors
-"endif
 " Use the Gruvbox Dark theme
 syntax enable
 set background=dark
@@ -73,8 +63,7 @@ set hlsearch    " dont highlight search results
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
 " Don’t show the intro message when starting Vim
-set shortmess=atI
-set shortmess+=O
+set shortmess=atIO
 " Don't beep
 set novisualbell
 " Disable error bells
@@ -85,7 +74,7 @@ set title
 set showmode
 " Show the (partial) command as it’s being typed
 set showcmd
-" Enable mouse in all modes
+" Disable mouse in all modes
 set mouse-=a
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
@@ -116,6 +105,7 @@ set laststatus=2
 "set statusline+=\ %l:%c
 "set statusline+=\ 
 
+" Highlight chars red for >80 chars
 "highlight CustomColor ctermbg=red ctermfg=white guibg=#592929
 "match CustomColor /\%81v.\+/
 
