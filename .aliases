@@ -8,6 +8,10 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+# Shortcuts
+alias p="cd ~/projects"
+alias g="git"
+
 # Always enable colored `ls` & `grep` output
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'

@@ -45,3 +45,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Enable tab completion for `g` by marking it as an alias for `git`
+if type git &> /dev/null; then
+    source /usr/share/bash-completion/completions/git
+    __git_complete g __git_main
+fi

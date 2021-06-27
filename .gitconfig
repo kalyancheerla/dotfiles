@@ -5,16 +5,19 @@
 	# View abbreviated SHA, description, and history graph of the latest 20 commits.
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-	# View the current working tree status using the short format.
-	s = status -s
+	# View the current working tree status.
+	s = status
+
+	# shortform for pull.
+	p = pull
 
 	# Show the diff between the latest commit and the current state.
 	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
 
-	# alias for invoking vimdiff
+	# alias for invoking vimdiff.
 	vd = difftool
 
-	# Show verbose output about tags, branches or remotes
+	# Show verbose output about tags, branches or remotes.
 	tags = tag -l
 	branches = branch --all
 	remotes = remote --verbose
@@ -25,8 +28,8 @@
 	# List contributors with number of commits.
 	contributors = shortlog --summary --numbered
 [diff]
-	# set difftool as vimdiff
+	# set difftool as vimdiff.
 	tool = vimdiff
 [difftool]
-	# no prompts b/w files
+	# no prompts b/w files.
 	prompt = false
