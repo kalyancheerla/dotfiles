@@ -1,1 +1,3 @@
 .extras
+.vim/undo/*
+.vim/swaps/*.swp
