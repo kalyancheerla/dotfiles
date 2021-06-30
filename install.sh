@@ -13,28 +13,19 @@ declare -a DOTFILES=(
 ".tmux.conf"
 ".vimrc"
 ".gitconfig"
-".gdbinit")
+".gdbinit"
+".vim"
+"bin")
 
-echo "Sourcing dotfiles started..."
-for file in "${DOTFILES[@]}"; do
-    if [ -h "$HOME/$file" ]; then
-        echo "[-] skipping $file"
+echo "Symlinking dotfiles started..."
+for any in "${DOTFILES[@]}"; do
+    if [ -h "$HOME/$any" ]; then
+        echo "[-] skipping $any"
         continue
-    elif [ -f "$HOME/$file" ]; then
-        echo "[+] moving $HOME/$file -> $HOME/$file.orig"
-        mv "$HOME/$file" "$HOME/$file.orig"
+    elif [ -f "$HOME/$any" ]; then
+        echo "[+] moving $HOME/$any -> $HOME/$any.orig"
+        mv "$HOME/$any" "$HOME/$any.orig"
     fi
-    echo "[+] symlinking $DOTFILESPATH/$file -> $HOME/$file"
-    ln -s "$DOTFILESPATH/$file" "$HOME/$file"
+    echo "[+] symlinking $DOTFILESPATH/$any -> $HOME/$any"
+    ln -s "$DOTFILESPATH/$any" "$HOME/$any"
 done
-
-echo "Setting up vim directory..."
-if [ -d "$HOME/.vim" ]; then
-    echo "[+] moving $HOME/.vim -> $HOME/.vim.orig"
-    rm -rf "$HOME/.vim.orig"
-    mv "$HOME/.vim" "$HOME/.vim.orig"
-fi
-echo "[+] copying $DOTFILESPATH/.vim -> $HOME/.vim"
-cp -r "$DOTFILESPATH/.vim" "$HOME/.vim"
-echo "[+] removing gitkeep files"
-find "$HOME/.vim" -name ".gitkeep" -size 0c -delete
