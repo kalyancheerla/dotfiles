@@ -58,5 +58,5 @@ for any in "${DOTFILES[@]}"; do
     fi
     # Create the symlink
     echo "[+] symlinking $DOTFILESPATH/$any -> $HOME/$any"
-    ln -s "$LN_OPTS" "$DOTFILESPATH/$any" "$HOME/$any"
+    ln $LN_OPTS -s "$DOTFILESPATH/$any" "$HOME/$any"
 done
