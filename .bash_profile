@@ -1,8 +1,8 @@
 # ~/.bash_profile: executed by the bash for login shells.
 
-# Add `~/bin` to the `$PATH` if exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
+# Add `~/.bin` to the `$PATH` if exists
+if [ -d "$HOME/.bin" ]; then
+    PATH="$HOME/.bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
