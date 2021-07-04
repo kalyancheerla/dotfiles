@@ -1,3 +1,7 @@
+# no extras config file
 .extras
+
+# no vim undo, swap, etc., files
 .vim/undo/*
 .vim/swaps/*.swp
+.vim/.netrwhist
