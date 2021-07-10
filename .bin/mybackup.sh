@@ -2,11 +2,10 @@
 
 # included directories for backup
 declare -a INCFOLDERS=(
-"$HOME/Desktop"
-"$HOME/Downloads"
-"$HOME/docs"
+"$HOME/dev"
 "$HOME/projects"
 "$HOME/repos"
+"$HOME/self"
 "$HOME/tmp"
 )
 
