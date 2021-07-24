@@ -33,3 +33,9 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Public IP
 alias publicip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# aliases to work with sudo
+alias sudo="sudo "
+
+# Full update, upgrade & auto-remove/clean
+alias upgrade="sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean"
