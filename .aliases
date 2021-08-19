@@ -38,4 +38,4 @@ alias publicip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias sudo="sudo "
 
 # Full update, upgrade & auto-remove/clean
-alias upgrade="sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean"
+alias upgrade="sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean"
