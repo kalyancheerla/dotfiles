@@ -33,3 +33,5 @@
 [difftool]
 	# no prompts b/w files.
 	prompt = false
+	# Be able to abort all diffs with `:cq` or `:cquit`
+	trustExitCode = true
