@@ -42,3 +42,6 @@ alias upgrade="sudo apt update && sudo apt full-upgrade && sudo apt autoremove &
 
 # new time alias
 alias ktime="command time -f '\nCommand Name: %C\nTime taken: %E\nExit status: %x'"
+
+# tmux alias
+alias tmux='tmux -u'
