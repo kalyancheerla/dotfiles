@@ -38,7 +38,7 @@ alias publicip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias sudo="sudo "
 
 # Full update, upgrade & auto-remove/clean
-alias upgrade="sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean"
+alias upgrade="sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y"
 
 # new time alias
 alias ktime="command time -f '\nCommand Name: %C\nTime taken: %E\nExit status: %x'"

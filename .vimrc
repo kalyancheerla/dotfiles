@@ -108,6 +108,8 @@ set laststatus=2
 " Highlight chars red for >80 chars
 "highlight CustomColor ctermbg=red ctermfg=white guibg=#592929
 "match CustomColor /\%81v.\+/
+" Set 80 column color
+set colorcolumn=80
 
 " Centralize backups, swapfiles and undo history
 "set backup
