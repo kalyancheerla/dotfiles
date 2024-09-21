@@ -45,3 +45,7 @@ alias ktime="command time -f '\nCommand Name: %C\nTime taken: %E\nExit status: %
 
 # tmux alias
 alias tmux='tmux -u'
+
+# nvim alias
+alias nv="nvim"
+alias nvi="nvim"
