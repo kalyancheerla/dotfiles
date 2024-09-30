@@ -1,7 +1,7 @@
 [user]
 	name = Kalyan Cheerla
 	email = 32354220+kalyancheerla@users.noreply.github.com
-	signingkey = 0000000000000000
+	signingkey = C81CE9365DD70C87
 [alias]
 	# View abbreviated SHA, description, and history graph of the latest 20 commits.
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit

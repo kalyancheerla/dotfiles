@@ -6,6 +6,7 @@ DOTFILESPATH="$PWD"
 # array of files and directories to symlink
 declare -a DOTFILES=(
 # Files
+# for bash
 ".bash_profile"
 ".bashrc"
 ".bash_prompt"
@@ -14,12 +15,13 @@ declare -a DOTFILES=(
 ".functions"
 ".extras"
 ".inputrc"
+# tmux
 ".tmux.conf"
-".vimrc"
+#".vimrc"
 ".gitconfig"
 ".gdbinit"
 # Directories
-".vim"
+#".vim"
 ".bin"
 )
 

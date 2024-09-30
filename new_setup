@@ -1,4 +1,0 @@
-# Add sym link for .gitconfig in home dir
-ln -s /<full-path>/.gitconfig /<home-path>/
-
-# Change the GnuPG key id in gitconfig
