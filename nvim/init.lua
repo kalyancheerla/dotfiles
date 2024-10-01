@@ -222,6 +222,21 @@ require('lazy').setup({
       end
     end,
   },
+  {
+    'folke/zen-mode.nvim',
+    opts = {
+      window = {
+        width = 150,
+      },
+      --[[
+      function()
+        vim.keymap.set('n', '<leader>zz', function()
+          require('zen-mode').toggle()
+        end)
+      end,
+      --]]
+    },
+  },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
