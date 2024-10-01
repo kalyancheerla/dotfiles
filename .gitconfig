@@ -30,11 +30,13 @@
 	contributors = shortlog --summary --numbered
 [diff]
 	# set difftool as vimdiff.
-	tool = vimdiff
+	tool = nvimdiff
 [difftool]
 	# no prompts b/w files.
 	prompt = false
 	# Be able to abort all diffs with `:cq` or `:cquit`
 	trustExitCode = true
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [commit]
 	gpgsign = true

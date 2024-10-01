@@ -47,5 +47,11 @@ alias ktime="command time -f '\nCommand Name: %C\nTime taken: %E\nExit status: %
 alias tmux='tmux -u'
 
 # nvim alias
+alias v="nvim"
+alias n="nvim"
+alias vi="nvim"
 alias nv="nvim"
 alias nvi="nvim"
+
+# kubectl alias
+alias k="kubectl"
