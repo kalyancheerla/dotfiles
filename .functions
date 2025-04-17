@@ -17,15 +17,30 @@ function tex2pdf() {
 }
 
 function thesistex() {
-    if [ $# == 1 ]; then
-        mkdir -p "$HOME/tmp/Chapters"
-        local filename=$(basename "$1" .tex)
+    if [ $# -eq 1 ]; then
+        local texfile="$1"
+        local filename=$(basename "$texfile" .tex)
+        local sourcedir=$(dirname "$texfile")
         local tmpdir="$HOME/tmp"
 
-        xelatex --output-dir="$tmpdir" "$1"
+        mkdir -p "$tmpdir/Chapters"
+
+        # First pass to generate aux
+        xelatex --output-dir="$tmpdir" "$texfile"
+
+        # Copy .bib file(s) into tmpdir so bibtex can find them
+        cp "$sourcedir"/*.bib "$tmpdir"/
+
+        # Run bibtex in tmpdir
         (cd "$tmpdir" && bibtex "$filename")
-        xelatex --output-dir="$tmpdir" "$1"
-        xelatex --output-dir="$tmpdir" "$1"
+
+        # Two more passes
+        xelatex --output-dir="$tmpdir" "$texfile"
+        xelatex --output-dir="$tmpdir" "$texfile"
+
+        # Final copy of PDF
         cp "$tmpdir/$filename.pdf" .
+    else
+        echo "Usage: thesistex yourfile.tex"
     fi
 }
