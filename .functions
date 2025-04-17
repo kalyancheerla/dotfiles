@@ -8,6 +8,24 @@ function mkd() {
 # compile xetex with output files in $HOME/tmp and
 # open it in using evince pdf viewer
 # '~' doesn't expand properly so $HOME is used
+#function tex2pdf() {
+#    [ $# == 1 ] && xelatex --output-dir="$HOME/tmp/" $1 && evince "$HOME/tmp/$(basename $1 '.tex').pdf"
+#}
+
 function tex2pdf() {
-    [ $# == 1 ] && xelatex --output-dir="$HOME/tmp/" $1 && evince "$HOME/tmp/$(basename $1 '.tex').pdf"
+    [ $# == 1 ] && xelatex --output-dir="$HOME/tmp/" $1 && cp "$HOME/tmp/$(basename $1 '.tex').pdf" .
+}
+
+function thesistex() {
+    if [ $# == 1 ]; then
+        mkdir -p "$HOME/tmp/Chapters"
+        local filename=$(basename "$1" .tex)
+        local tmpdir="$HOME/tmp"
+
+        xelatex --output-dir="$tmpdir" "$1"
+        (cd "$tmpdir" && bibtex "$filename")
+        xelatex --output-dir="$tmpdir" "$1"
+        xelatex --output-dir="$tmpdir" "$1"
+        cp "$tmpdir/$filename.pdf" .
+    fi
 }
