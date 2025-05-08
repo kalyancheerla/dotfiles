@@ -44,3 +44,67 @@ function thesistex() {
         echo "Usage: thesistex yourfile.tex"
     fi
 }
+
+function papertex() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: papertex yourfile.tex"
+        return 1
+    fi
+
+    local texfile="$1"
+
+    if [ ! -f "$texfile" ]; then
+        echo "Error: File '$texfile' not found."
+        return 1
+    fi
+
+    # Required commands check
+    for cmd in pdflatex bibtex basename dirname mkdir cp rm; do
+        if ! command -v "$cmd" >/dev/null 2>&1; then
+            echo "Error: Required command '$cmd' not found."
+            return 1
+        fi
+    done
+
+    local sourcedir=$(dirname "$texfile")
+    local absdir=$(cd "$sourcedir" && pwd)
+    local filename=$(basename "$texfile" .tex)
+    local builddir="$absdir/.build"
+
+    # Setup build directory
+    rm -rf "$builddir"
+    mkdir -p "$builddir"
+
+    # 1st pdflatex pass
+    echo "[1/5] pdflatex (1st pass)"
+    if ! pdflatex --output-directory="$builddir" "$absdir/$filename.tex" >/dev/null; then
+        echo "Error: pdflatex failed."
+        return 1
+    fi
+
+    # Copy .bib files
+    cp "$absdir"/*.bib "$builddir"/ 2>/dev/null || echo "Warning: No .bib files found."
+
+    # bibtex
+    echo "[2/5] bibtex"
+    (cd "$builddir" && bibtex "$filename") >/dev/null || {
+        echo "Error: bibtex failed."
+        return 1
+    }
+
+    # 2nd and 3rd pdflatex passes
+    echo "[3/5] pdflatex (2nd pass)"
+    pdflatex --output-directory="$builddir" "$absdir/$filename.tex" >/dev/null
+
+    echo "[4/5] pdflatex (3rd pass)"
+    pdflatex --output-directory="$builddir" "$absdir/$filename.tex" >/dev/null
+
+    # Move final PDF to project dir
+    echo "[5/5] Copying PDF to source directory"
+    cp "$builddir/$filename.pdf" "$absdir/" || {
+        echo "Error: Failed to copy final PDF."
+        return 1
+    }
+
+    echo "✅ Success: $absdir/$filename.pdf"
+}
